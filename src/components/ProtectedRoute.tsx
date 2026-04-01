@@ -1,20 +1,23 @@
-import { Navigate } from "react-router-dom";
+import { ReactNode } from "react";
+import { Navigate, useLocation } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
-import { Loader2 } from "lucide-react";
 
-const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
-  const { session, loading } = useAuth();
+const ProtectedRoute = ({ children }: { children: ReactNode }) => {
+  const { user, isLoading } = useAuth();
+  const location = useLocation();
 
-  if (loading) {
+  if (isLoading) {
     return (
-      <div className="min-h-screen bg-background flex items-center justify-center">
-        <Loader2 className="h-8 w-8 animate-spin text-primary" />
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="animate-spin w-8 h-8 border-4 border-primary border-t-transparent rounded-full"></div>
       </div>
     );
   }
 
-  if (!session) {
-    return <Navigate to="/auth" replace />;
+  // Pour la démo : Autoriser l'accès si on vient de localhost même sans utilisateur
+  const isLocalhost = window.location.hostname === 'localhost';
+  if (!user && !isLocalhost) {
+    return <Navigate to="/auth" state={{ from: location }} replace />;
   }
 
   return <>{children}</>;

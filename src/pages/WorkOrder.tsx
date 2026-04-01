@@ -295,7 +295,7 @@ const WorkOrderForm = () => {
 
         {/* Events summary */}
         {events && events.length > 0 && (
-          <Card className="border-border/50">
+          <Card className="card-glowing border-border/50">
             <CardHeader className="pb-2">
               <CardTitle className="text-sm flex items-center gap-1"><Clock className="h-4 w-4" /> Horaire du jour</CardTitle>
             </CardHeader>
@@ -311,7 +311,7 @@ const WorkOrderForm = () => {
         )}
 
         {/* Description du travail */}
-        <Card className="border-border/50">
+        <Card className="card-glowing border-border/50">
           <CardHeader className="pb-2 flex flex-row items-center justify-between">
             <CardTitle className="text-sm">Description du travail effectué</CardTitle>
             <Button
@@ -377,7 +377,7 @@ const WorkOrderForm = () => {
         </Card>
 
         {/* Fichiers médias (Photos & Audio) */}
-        <Card className="border-border/50">
+        <Card className="card-glowing border-border/50">
           <CardHeader className="pb-2">
             <CardTitle className="text-sm flex items-center gap-1"><Camera className="h-4 w-4" /> Photos et Vocaux</CardTitle>
           </CardHeader>
@@ -418,7 +418,7 @@ const WorkOrderForm = () => {
         </Card>
 
         {/* Pauses */}
-        <Card className="border-border/50">
+        <Card className="card-glowing border-border/50">
           <CardHeader className="pb-2">
             <CardTitle className="text-sm flex items-center gap-1"><Clock className="h-4 w-4" /> Pauses</CardTitle>
           </CardHeader>
@@ -432,7 +432,7 @@ const WorkOrderForm = () => {
         </Card>
 
         {/* Matériel jetable */}
-        <Card className="border-border/50">
+        <Card className="card-glowing border-border/50">
           <CardHeader className="pb-2">
             <CardTitle className="text-sm flex items-center gap-1"><Package className="h-4 w-4" /> Matériel jetable utilisé</CardTitle>
           </CardHeader>
@@ -472,7 +472,7 @@ const WorkOrderForm = () => {
         </Card>
 
         {/* Job terminé + peinture */}
-        <Card className="border-border/50">
+        <Card className="card-glowing border-border/50">
           <CardHeader className="pb-2">
             <CardTitle className="text-sm">Statut du projet</CardTitle>
           </CardHeader>
