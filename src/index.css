@@ -1,0 +1,246 @@
+@import "./styles/colors.css";
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Premium dark painting company palette */
+    --background: 220 20% 10%;
+    --foreground: 45 20% 95%;
+
+    --card: 220 18% 13%;
+    --card-foreground: 45 20% 95%;
+
+    --popover: 220 18% 13%;
+    --popover-foreground: 45 20% 95%;
+
+    --primary: 38 92% 55%;
+    --primary-foreground: 220 20% 8%;
+
+    --secondary: 220 15% 18%;
+    --secondary-foreground: 45 15% 85%;
+
+    --muted: 220 15% 16%;
+    --muted-foreground: 220 10% 55%;
+
+    --accent: 38 70% 45%;
+    --accent-foreground: 220 20% 8%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 15% 20%;
+    --input: 220 15% 20%;
+    --ring: 38 92% 55%;
+
+    --radius: 0.625rem;
+
+    /* Extended palette */
+    --success: 142 71% 45%;
+    --success-foreground: 0 0% 100%;
+    --warning: 38 92% 55%;
+    --warning-foreground: 220 20% 8%;
+    --info: 210 80% 55%;
+    --info-foreground: 0 0% 100%;
+
+    /* Semantic surfaces */
+    --surface-elevated: 220 18% 15%;
+    --surface-overlay: 220 18% 11%;
+
+    /* Voice/recording */
+    --recording: 0 84% 60%;
+    --recording-pulse: 0 84% 65%;
+
+    /* Status colors */
+    --status-new: 210 80% 55%;
+    --status-active: 142 71% 45%;
+    --status-pending: 38 92% 55%;
+    --status-completed: 142 71% 45%;
+    --status-archived: 220 10% 40%;
+
+    /* Sidebar */
+    --sidebar-background: 220 20% 8%;
+    --sidebar-foreground: 45 15% 75%;
+    --sidebar-primary: 38 92% 55%;
+    --sidebar-primary-foreground: 220 20% 8%;
+    --sidebar-accent: 220 15% 14%;
+    --sidebar-accent-foreground: 45 20% 95%;
+    --sidebar-border: 220 15% 16%;
+    --sidebar-ring: 38 92% 55%;
+
+    /* Legacy gold tokens (compat) */
+    --gold: 38 92% 55%;
+    --gold-light: 38 92% 65%;
+    --gold-dark: 38 92% 42%;
+    --charcoal: 220 18% 13%;
+    --charcoal-light: 220 15% 18%;
+
+    /* Typography */
+    --font-sans: 'DM Sans', system-ui, -apple-system, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+
+    /* Accessibility */
+    --focus-ring-width: 3px;
+    --focus-ring-offset: 2px;
+    --min-touch-target: 44px;
+  }
+
+  /* High contrast accessibility mode */
+  .high-contrast {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+    --card: 0 0% 5%;
+    --card-foreground: 0 0% 100%;
+    --primary: 45 100% 55%;
+    --primary-foreground: 0 0% 0%;
+    --secondary: 0 0% 12%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 0 0% 10%;
+    --muted-foreground: 0 0% 70%;
+    --border: 0 0% 30%;
+    --input: 0 0% 20%;
+    --ring: 45 100% 55%;
+    --surface-elevated: 0 0% 8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Focus styles for accessibility */
+  *:focus-visible {
+    @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
+  }
+
+  /* Large text mode */
+  .large-text {
+    font-size: 118%;
+  }
+
+  .large-text h1 { font-size: 2.5rem; }
+  .large-text h2 { font-size: 2rem; }
+  .large-text h3 { font-size: 1.5rem; }
+  .large-text p, .large-text span, .large-text li { font-size: 1.15rem; }
+}
+
+/* Utility classes */
+@layer components {
+  .touch-target {
+    min-height: var(--min-touch-target);
+    min-width: var(--min-touch-target);
+  }
+
+  .glass-surface {
+    @apply bg-card/80 backdrop-blur-md border border-border/50;
+  }
+
+  .gradient-primary {
+    background: linear-gradient(135deg, hsl(38 92% 55%), hsl(28 85% 50%));
+  }
+
+  .gradient-surface {
+    background: linear-gradient(180deg, hsl(var(--card)), hsl(var(--background)));
+  }
+
+  .text-gradient {
+    background: linear-gradient(135deg, hsl(38 92% 55%), hsl(28 85% 50%));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Legacy compat */
+  .gold-gradient {
+    background: linear-gradient(135deg, hsl(38 92% 55%), hsl(28 85% 50%));
+  }
+
+  .gold-text {
+    background: linear-gradient(135deg, hsl(38 92% 55%), hsl(38 92% 65%));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .card-glow {
+    box-shadow: 0 0 30px -10px hsl(38 92% 55% / 0.1);
+  }
+
+  .glass {
+    @apply bg-card/80 backdrop-blur-md;
+  }
+
+  .recording-pulse {
+    animation: pulse-recording 1.5s ease-in-out infinite;
+  }
+
+  @keyframes pulse-recording {
+    0%, 100% { box-shadow: 0 0 0 0 hsl(var(--recording) / 0.4); }
+    50% { box-shadow: 0 0 0 12px hsl(var(--recording) / 0); }
+  }
+
+  .status-badge-new { @apply bg-[hsl(var(--status-new))] text-white; }
+  .status-badge-active { @apply bg-[hsl(var(--status-active))] text-white; }
+  .status-badge-pending { @apply bg-[hsl(var(--status-pending))] text-black; }
+  .status-badge-completed { @apply bg-[hsl(var(--status-completed))] text-white; }
+  .status-badge-archived { @apply bg-[hsl(var(--status-archived))] text-white; }
+}/* Ajout d'une touche visuelle type rings.ai : élégant, contrasté, glowing */
+@layer base {
+  :root {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 38 92% 50%; /* Orange/Jaune vif */
+    --primary-foreground: 355.7 100% 97.3%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 38 92% 50%;
+  }
+}
+
+body {
+  background: radial-gradient(circle at 50% 0%, #1e1e2d, #0d0d14) !important;
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+}
+
+.card-glowing {
+  background: rgba(20, 20, 25, 0.6) !important;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 165, 0, 0.15) !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 15px rgba(255, 165, 0, 0.05) !important;
+}
+
+.btn-primary-glow {
+  background: linear-gradient(90deg, #ff8c00, #ffa500);
+  box-shadow: 0 0 20px rgba(255, 140, 0, 0.4);
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.btn-primary-glow:hover {
+  box-shadow: 0 0 30px rgba(255, 140, 0, 0.6);
+  transform: translateY(-1px);
+}

@@ -1,0 +1,137 @@
+/* 
+  THÈME : PEINTURE RÉMY
+  Inspiré du design Rings.ai, mais adapté pour une entreprise de peinture.
+  Esthétique, coloré, moderne et vibrant.
+*/
+
+:root {
+  /* Couleurs de marque : Un orange/or chaud (Rings) et un bleu nuit profond */
+  --brand-primary: 38 92% 55%; /* Orange/Or */
+  --brand-primary-glow: rgba(245, 158, 11, 0.4);
+  --brand-secondary: 220 50% 40%; /* Bleu vibrant */
+  --brand-secondary-glow: rgba(59, 130, 246, 0.4);
+  --brand-accent: 320 80% 55%; /* Touche de magenta pour dynamiser */
+  
+  /* Arrière-plan profond et texturé */
+  --bg-gradient-start: #0f111a;
+  --bg-gradient-mid: #151828;
+  --bg-gradient-end: #0a0a0f;
+  
+  /* Cartes semi-transparentes avec effet "glassmorphism" */
+  --card-bg: rgba(25, 28, 41, 0.6);
+  --card-border: rgba(255, 255, 255, 0.08);
+  --card-border-hover: rgba(245, 158, 11, 0.3);
+}
+
+body {
+  background: 
+    radial-gradient(circle at 15% 50%, rgba(245, 158, 11, 0.08), transparent 25%),
+    radial-gradient(circle at 85% 30%, rgba(59, 130, 246, 0.08), transparent 25%),
+    radial-gradient(circle at 50% 0%, var(--bg-gradient-mid), var(--bg-gradient-end)) !important;
+  background-attachment: fixed !important;
+  color: #f8fafc;
+}
+
+/* Redéfinition des variables Tailwind principales pour s'accorder */
+@layer base {
+  :root {
+    --background: 230 25% 10%;
+    --foreground: 210 40% 98%;
+    --card: 228 25% 14%;
+    --card-foreground: 210 40% 98%;
+    --popover: 228 25% 12%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 38 92% 55%;
+    --primary-foreground: 220 20% 10%;
+    --secondary: 217 33% 20%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217 33% 18%;
+    --muted-foreground: 215 20% 65%;
+    --accent: 217 33% 25%;
+    --accent-foreground: 210 40% 98%;
+    --border: 217 33% 20%;
+    --input: 217 33% 20%;
+    --ring: 38 92% 55%;
+  }
+}
+
+/* Classes utilitaires pour le "Glow" (Effet lumineux esthétique) */
+.card-glowing {
+  background: var(--card-bg) !important;
+  backdrop-filter: blur(12px) saturate(150%);
+  -webkit-backdrop-filter: blur(12px) saturate(150%);
+  border: 1px solid var(--card-border) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2), 
+              inset 0 1px 0 rgba(255, 255, 255, 0.05) !important;
+  transition: all 0.3s ease;
+}
+
+.card-glowing:hover {
+  border-color: var(--card-border-hover) !important;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3), 
+              0 0 15px var(--brand-primary-glow) !important;
+  transform: translateY(-2px);
+}
+
+/* Boutons principaux vibrants */
+.btn-primary-glow {
+  background: linear-gradient(135deg, hsl(38, 92%, 55%), hsl(25, 95%, 50%)) !important;
+  color: #111 !important;
+  font-weight: 600 !important;
+  border: none !important;
+  box-shadow: 0 4px 15px var(--brand-primary-glow),
+              inset 0 1px 0 rgba(255, 255, 255, 0.4) !important;
+  transition: all 0.2s ease !important;
+  text-shadow: none !important;
+}
+
+.btn-primary-glow:hover {
+  box-shadow: 0 6px 20px rgba(245, 158, 11, 0.6),
+              inset 0 1px 0 rgba(255, 255, 255, 0.5) !important;
+  transform: translateY(-1px) scale(1.01);
+  filter: brightness(1.1);
+}
+
+/* Badges de statut colorés */
+.badge-vibrant-success {
+  background: rgba(16, 185, 129, 0.15) !important;
+  color: #34d399 !important;
+  border: 1px solid rgba(16, 185, 129, 0.3) !important;
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.1);
+}
+
+.badge-vibrant-warning {
+  background: rgba(245, 158, 11, 0.15) !important;
+  color: #fbbf24 !important;
+  border: 1px solid rgba(245, 158, 11, 0.3) !important;
+  box-shadow: 0 0 10px rgba(245, 158, 11, 0.1);
+}
+
+.badge-vibrant-info {
+  background: rgba(59, 130, 246, 0.15) !important;
+  color: #60a5fa !important;
+  border: 1px solid rgba(59, 130, 246, 0.3) !important;
+  box-shadow: 0 0 10px rgba(59, 130, 246, 0.1);
+}
+
+/* Sidebar redessinée */
+.bg-sidebar {
+  background: rgba(15, 17, 26, 0.8) !important;
+  backdrop-filter: blur(20px);
+  border-right: 1px solid rgba(255, 255, 255, 0.05) !important;
+}
+
+/* Dégradés de texte */
+.text-gradient-gold {
+  background: linear-gradient(135deg, #fbbf24, #f59e0b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-blue {
+  background: linear-gradient(135deg, #60a5fa, #3b82f6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
