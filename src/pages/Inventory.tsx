@@ -55,13 +55,16 @@ interface InventoryRequest {
 }
 
 const categoryTabs = [
-  { value: "peinture", label: "Peintures et teintes", icon: Paintbrush },
-  { value: "preparation", label: "Préparation de surface", icon: Package },
-  { value: "protection", label: "Protection / Sécurité", icon: HardHat },
-  { value: "jetable", label: "Consommables & Jetable", icon: Trash },
-  { value: "outils", label: "Équipements & Outils spéciaux", icon: Wrench },
-  { value: "quincaillerie", label: "Quincaillerie", icon: Package },
-  { value: "divers", label: "Divers", icon: Package },
+  { value: "rouleaux", label: "Rouleaux", icon: Package },
+  { value: "pinceaux", label: "Pinceaux", icon: Paintbrush },
+  { value: "outils_electriques", label: "Outils électriques", icon: Wrench },
+  { value: "equipement_peinture", label: "Équipement peinture", icon: Package },
+  { value: "epi", label: "Équipement protection individuelle", icon: HardHat },
+  { value: "tape", label: "Tape", icon: Package },
+  { value: "eponges", label: "Éponges", icon: Package },
+  { value: "platrage", label: "Plâtrage", icon: Package },
+  { value: "materiel_peinture", label: "Matériel peinture", icon: Package },
+  { value: "peinture_stock", label: "Peinture en stock", icon: Paintbrush },
 ];
 
 const categoryLabels: Record<string, string> = {};
@@ -112,7 +115,9 @@ const Inventory = () => {
   const [category, setCategory] = useState("peinture");
   const [brand, setBrand] = useState("");
   const [sku, setSku] = useState("");
-  const [quantity, setQuantity] = useState("");
+  const [quantity, setQuantity] = useState(0);
+  const [color, setColor] = useState<string>("#ffffff");
+  const [colorName, setColorName] = useState<string>("");
   const [unit, setUnit] = useState("unité");
   const [unitCost, setUnitCost] = useState("");
   const [minStock, setMinStock] = useState("");
@@ -121,7 +126,6 @@ const Inventory = () => {
   const [sdsUrl, setSdsUrl] = useState("");
   const [supplierPrice, setSupplierPrice] = useState("");
   const [supplier, setSupplier] = useState("");
-  const [color, setColor] = useState("");
   const [finish, setFinish] = useState("");
   const [sellingPrice, setSellingPrice] = useState("");
 
@@ -840,7 +844,7 @@ const Inventory = () => {
             <div className="grid grid-cols-3 gap-3">
               <div className="space-y-1.5">
                 <Label htmlFor="inv-qty">Quantité</Label>
-                <Input id="inv-qty" type="number" min="0" step="1" value={quantity} onChange={(e) => setQuantity(e.target.value)} placeholder="0" />
+                <Input id="inv-qty" type="number" min="0" step="1" value={quantity} onChange={(e) => setQuantity(e.target.value)} placeholder="0" disabled={!isAdminOrManager} className={!isAdminOrManager ? "opacity-50 cursor-not-allowed" : ""} />
               </div>
               <div className="space-y-1.5">
                 <Label htmlFor="inv-unit">Unité</Label>
